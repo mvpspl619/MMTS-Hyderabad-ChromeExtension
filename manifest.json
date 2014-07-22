@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+
+  "name": "MMTS Status Live",
+  "description": "Use this extension to quickly get the live running status of MMTS trains",
+  "version": "1.0",
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "index.html"
+  }
+}
