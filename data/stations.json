@@ -1,0 +1,106 @@
+[
+    {
+        "name": "Arts College",
+        "value": 0
+    },
+    {
+        "name": "Begumpet",
+        "value": 1
+    },
+    {
+        "name": "Bharatnagar",
+        "value": 2
+    },
+    {
+        "name": "Borabanda",
+        "value": 3
+    },
+    {
+        "name": "Chandanagar",
+        "value": 4
+    },
+    {
+        "name": "Dabirpura",
+        "value": 5
+    },
+    {
+        "name": "Falaknuma",
+        "value": 6
+    },
+    {
+        "name": "Fatehnagar",
+        "value": 7
+    },
+    {
+        "name": "Hafeezpet",
+        "value": 8
+    },
+    {
+        "name": "Hitech City",
+        "value": 9
+    },
+    {
+        "name": "Huppuguda",
+        "value": 10
+    },
+    {
+        "name": "Hyderabad",
+        "value": 11
+    },
+    {
+        "name": "Jamai Osmania",
+        "value": 12
+    },
+    {
+        "name": "James Street",
+        "value": 13
+    },
+    {
+        "name": "Kacheguda",
+        "value": 14
+    },
+    {
+        "name": "Khairatabad",
+        "value": 15
+    },
+    {
+        "name": "Lakdikapul",
+        "value": 16
+    },
+    {
+        "name": "Lingampalli",
+        "value": 17
+    },
+    {
+        "name": "Malakpet",
+        "value": 18
+    },
+    {
+        "name": "Nature Cure Hospital",
+        "value": 19
+    },
+    {
+        "name": "Necklace Road",
+        "value": 20
+    },
+    {
+        "name": "Sanjeevaiah Park",
+        "value": 21
+    },
+    {
+        "name": "Secunderabad",
+        "value": 22
+    },
+    {
+        "name": "Sitafalmandi",
+        "value": 23
+    },
+    {
+        "name": "Vidyanagar",
+        "value": 24
+    },
+    {
+        "name": "Yakutpura",
+        "value": 25
+    }
+]
