@@ -19,8 +19,7 @@ angular.module('mmts', ['ngRoute'])
 
 angular.module('mmts').controller('defaultController', ['$scope', 'stationsService', 'sharedService', function($scope, stationsService, sharedService){
 	$scope.station = {};
-	$scope.message = "Chrome Extensions welcomes AngularJS";
-	$scope.stations = [{"name": "junk", "value":0}, {"name": "waste", "value":1}]
+	$scope.station.isValid = false;
 	var stationsPromise = stationsService.getStations();
 	stationsPromise.then(function(data){
 		$scope.stations = data;
@@ -40,10 +39,19 @@ angular.module('mmts').controller('defaultController', ['$scope', 'stationsServi
 					if($scope.stations[i].value === sharedService.toStation.value){
 						$scope.station.to = $scope.stations[i];
 					}	
-				}				
+				}
+				ValidateStation();				
 			};	
 		}
 	}	
+	function ValidateStation(){
+		$scope.station.isValid = false;
+		if(validate($scope.station.to) && validate($scope.station.from))
+			$scope.station.isValid = true;
+	}
+	function validate(a){
+	    return(typeof(a) != 'undefined' && a != null)
+	}
 	$scope.updateStation = function(type, stationModel){
 		switch(type) {
 		    case "from":
@@ -53,6 +61,7 @@ angular.module('mmts').controller('defaultController', ['$scope', 'stationsServi
 		        sharedService.toStation = stationModel;
 		        break;
 		}
+		ValidateStation();
 	}
 	$scope.interchange = function(){
 		var temp = $scope.station.from;
