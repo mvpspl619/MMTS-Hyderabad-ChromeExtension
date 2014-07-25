@@ -1,6 +1,6 @@
 html,
 body {
-    width: 400px;
+    width: 320px;
     height: 422px
 }
 body {
@@ -74,6 +74,14 @@ input {
 
 .bottom-padding-20 {
 	padding-bottom: 20px;
+}
+
+.right-padding-10 {
+	padding-right: 10px;
+}
+
+.right-padding-20 {
+	padding-right: 20px;
 }
 
 .no-left-padding {
