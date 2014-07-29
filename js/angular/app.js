@@ -17,8 +17,8 @@ angular.module('mmts', ['ngRoute', 'LocalStorageModule'])
 	.otherwise('/');
 });
 
-angular.module('mmts').controller('defaultController', ['$scope', 'stationsService', 'sharedService', '$location',
- function($scope, stationsService, sharedService, $location){
+angular.module('mmts').controller('defaultController', ['$scope', '$location', 'stationsService', 'sharedService',
+ function($scope, $location, stationsService, sharedService){
 	$scope.station = {};
 	$scope.station.isValid = false;
 	var stationsPromise = stationsService.getStations();
@@ -78,8 +78,8 @@ angular.module('mmts').controller('defaultController', ['$scope', 'stationsServi
 	}
 }]);
 
-angular.module('mmts').controller('searchTrainsController', ['$scope', 'sharedService', '$routeParams',
-	function($scope, sharedService, $routeParams){
+angular.module('mmts').controller('searchTrainsController', ['$scope', '$routeParams', 'sharedService', 'trainsService',
+	function($scope, $routeParams, sharedService, trainsService){
 		$scope.search = {};
 		(function(){
 			for (var i = sharedService.stations.length - 1; i >= 0; i--) {
@@ -87,22 +87,62 @@ angular.module('mmts').controller('searchTrainsController', ['$scope', 'sharedSe
 					$scope.search.from = sharedService.stations[i];
 				if(sharedService.stations[i].value === $routeParams.to)
 					$scope.search.to = sharedService.stations[i];
-			};	
+			};
+			trainsService.getTrains($scope.search.from.value, $scope.search.to.value)
+			.then(function(trains){
+				$scope.trains = trains;
+			}, function(error){
+				//show an error
+			});
 		})();
 }]);
 
-angular.module('mmts').controller('liveTrainController', ['$scope', function($scope){
-	$scope.message = "Chrome Extensions welcomes AngularJS";
+angular.module('mmts').factory('stationsService', ['$http', '$q', 'workerService', 
+	function($http, $q, workerService){
+	
+	var stationsService = {};
+	stationsService.getStations = function(){
+		var def = $q.defer();
+		workerService.readFile('./data/stations.json')
+		.then(function(data){
+			def.resolve(data);
+		}, function(error){
+			def.reject(error);
+		});
+		// $http.get('./data/stations.json').success(function(data){def.resolve(data)}).error(function(error){def.reject(error)});
+		return def.promise;
+	};
+	return stationsService;
 }]);
 
-angular.module('mmts').service('stationsService', ['$http', '$q', function($http, $q){
-	return {
-		getStations: function(){
-			var def = $q.defer();
-			$http.get('./data/stations.json').success(function(data){def.resolve(data)}).error(function(error){def.reject(error)});
-			return def.promise;
-		}
-	}
+angular.module('mmts').factory('trainsService', ['$http', '$q', 'workerService', 
+	function($http, $q, workerService){	
+
+	var trainsService = {};
+	trainsService.getTrains = function(from, to){
+		var def = $q.defer();
+		workerService.readFile('./data/trains.json')
+		.then(function(data){
+			//find the trains
+			//do a resolve for list of trains
+			var trainsList = [];
+			def.resolve(trainsList)
+		}, function(error){
+			def.reject(error);
+		});
+		return def.promise;
+	};
+	return trainsService;
+}]);
+
+angular.module('mmts').factory('workerService', ['$http', '$q', function($http, $q){
+	var worker = {};
+	worker.readFile = function(filePath){
+		var def = $q.defer();
+		$http.get(filePath).success(function(data){def.resolve(data)}).error(function(error){def.reject(error)});
+		return def.promise;
+	};
+	return worker;
 }]);
 
 angular.module('mmts').factory('sharedService', ['localStorageService', 
