@@ -88,7 +88,7 @@ angular.module('mmts').controller('searchTrainsController', ['$scope', '$routePa
 				if(sharedService.stations[i].value === $routeParams.to)
 					$scope.search.to = sharedService.stations[i];
 			};
-			trainsService.getTrains($scope.search.from.value, $scope.search.to.value)
+			trainsService.getTrains($scope.search.from, $scope.search.to)
 			.then(function(trains){
 				$scope.trains = trains;
 			}, function(error){
@@ -115,8 +115,8 @@ angular.module('mmts').factory('stationsService', ['$http', '$q', 'workerService
 	return stationsService;
 }]);
 
-angular.module('mmts').factory('trainsService', ['$http', '$q', 'workerService', 
-	function($http, $q, workerService){	
+angular.module('mmts').factory('trainsService', ['$http', '$q', 'workerService', 'sharedService',
+	function($http, $q, workerService, sharedService){	
 
 	var trainsService = {};
 	trainsService.getTrains = function(from, to){
@@ -124,7 +124,12 @@ angular.module('mmts').factory('trainsService', ['$http', '$q', 'workerService',
 		workerService.readFile('./data/trains.json')
 		.then(function(data){
 			//find the trains
+			var passingTrainNumbers = _.map(_.filter(data, function(t){return t.stationname === from.name}), function(t){return t.trainname});
+			var finalTrainNumbers = _.map(_.filter(_.filter(data, function(t){return _.contains(passingTrainNumbers, t.trainname)}), function(t){return t.stationname === to.name}), function(x){return x.trainname});
+			var initialTrains = _.filter(_.filter(data, function(d){return _.contains(finalTrainNumbers, d.trainname)}), function(e){return e.stationname === from.name});
+			var finalTrains = _.filter(_.filter(data, function(d){return _.contains(finalTrainNumbers, d.trainname)}), function(e){return e.stationname === to.name});
 			//do a resolve for list of trains
+
 			var trainsList = [];
 			def.resolve(trainsList)
 		}, function(error){
@@ -145,8 +150,8 @@ angular.module('mmts').factory('workerService', ['$http', '$q', function($http, 
 	return worker;
 }]);
 
-angular.module('mmts').factory('sharedService', ['localStorageService', 
-	function(localStorageService){
+angular.module('mmts').factory('sharedService', ['localStorageService','workerService',
+	function(localStorageService, workerService){
 
 	var data = {};
 	data.fromStation = localStorageService.get('from');
