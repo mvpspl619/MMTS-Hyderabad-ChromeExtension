@@ -1,13 +1,11 @@
 html,
 body {
     width: 320px;
-    height: 422px
-}
-body {
+    height: 422px;
     font-size: 11px;
     line-height: 1.1em;
     color: #eee;
-    background: #dc3d24
+    background: #dc3d24;
 }
 body,
 button,
@@ -15,6 +13,9 @@ input {
     font-family: 'Segoe UI', Tahoma, Arial, Helvetica, sans-serif
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
 
 .no-top-margin {
 	margin-top: 0px;
@@ -22,6 +23,10 @@ input {
 
 .top-margin-10 {
 	margin-top: 10px;
+}
+
+.top-margin-5 {
+	margin-top: 5px;
 }
 
 .top-margin-20 {
@@ -34,6 +39,10 @@ input {
 
 .bottom-margin-10 {
 	margin-bottom: 10px;
+}
+
+.bottom-margin-5 {
+	margin-bottom: 5px;
 }
 
 .bottom-margin-20 {
@@ -80,8 +89,16 @@ input {
 	padding-right: 10px;
 }
 
+.right-padding-15 {
+	padding-right: 15px;
+}
+
 .right-padding-20 {
 	padding-right: 20px;
+}
+
+.left-padding-10 {
+	padding-left: 10px;
 }
 
 .no-left-padding {
@@ -98,4 +115,12 @@ input {
 
 .padding-5 {
 	padding: 5px;
+}
+
+.no-sunday {
+	background: repeating-linear-gradient(45deg, #000000, #000000 10px, brown 10px, brown 20px);
+}
+
+.sunday {
+	background: brown;
 }

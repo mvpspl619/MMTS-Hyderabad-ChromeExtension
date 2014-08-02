@@ -7,7 +7,7 @@
     <link href="app.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <header class="navbar navbar-static-top bs-docs-nav no-margin" id="top" role="banner" style="background: white;">
+    <header class="navbar navbar-static-top bs-docs-nav no-margin" id="top" role="banner" style="background: white; position: fixed; top: 0; overflow: hidden; width: 320px;">
         <div class="col-xs-2 no-padding text-center">
           <a href="#" class="navbar-brand"><span class="glyphicon glyphicon-chevron-left"></span></a>
         </div>
@@ -17,10 +17,7 @@
         <div class="col-xs-2 text-center">
         </div>
     </header>
-    <div ng-view></div>
-    <footer style="position: fixed; bottom: 0; width: 100%;">
-        <h6 class="text-center">Developed with love by <a style="color: white;" href="http://www.twitter.com/mvpspl619" target="_blank">@mvpspl619</a></h6>
-    </footer>
+    <div ng-view style="margin-top: 51px;"></div>
 
     <!--Misc files-->
     <script type="text/javascript" src="js/lib/underscore/underscore.js"></script>
