@@ -118,9 +118,9 @@ input {
 }
 
 .no-sunday {
-	background: repeating-linear-gradient(45deg, #000000, #000000 10px, brown 10px, brown 20px);
+	background: repeating-linear-gradient(45deg, #000000, #000000 10px, #dc3d24 10px, #dc3d24 20px);
 }
 
 .sunday {
-	background: brown;
+	background: #dc3d24;
 }

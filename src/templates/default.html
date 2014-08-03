@@ -1,0 +1,30 @@
+<div class="row no-margin">
+    <div class="row no-margin top-padding-20">
+        <div class="col-xs-3 no-padding">
+            <div class="col-xs-12 pull-right text-center" style="height: 33px;">
+                <h5 style="font-size: 20px;margin: 0px;">From:</h5>
+            </div>
+            <div class="col-xs-12 pull-right text-center" style="height: 53px;">
+                <button class="btn btn-xs btn-default" style="margin-top: -1.5px; background-color: rgba(34, 34, 34, 0); border-color: rgba(34, 34, 34, 0);" data-ng-click="interchange()">
+                    <span class="glyphicon glyphicon-arrow-up"></span>
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </button>
+                <h5 style="font-size: 20px;padding-top: 7px;margin: 0px;">To:</h5>
+            </div>
+        </div>
+        <div class="col-xs-9 no-padding">
+            <div class="col-xs-12">
+                <select class="form-control" style="padding: 5px 18px 5px 5px; height: 33px;" data-ng-model="station.from" data-ng-options="station.name for station in stations" data-ng-change="updateStation('from', station.from)"></select>
+            </div>
+            <div class="col-xs-12 top-padding-20">
+                <select class="form-control" style="padding: 5px 18px 5px 5px; height: 33px;" data-ng-model="station.to" data-ng-options="s.name for s in stations" data-ng-change="updateStation('to', station.to)"></select>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center top-padding-20">
+        <a ng-disabled="!isValid" class="btn btn-default" style="padding: 6px 18px;" data-ng-click="performSearch()">search trains</a>
+    </div>
+</div>
+<footer style="position: fixed; bottom: 0; width: 100%; background: #dc3d24;">
+    <h6 class="text-center">Developed with love by <a style="color: white;" href="http://www.twitter.com/mvpspl619" target="_blank">@mvpspl619</a></h6>
+</footer>

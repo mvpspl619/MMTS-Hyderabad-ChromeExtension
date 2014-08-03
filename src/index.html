@@ -1,9 +1,10 @@
 <html lang="en" ng-app="mmts">
-
 <head>
     <meta charset="UTF-8">
     <title>MMTS Status Live</title>
+    <!-- build:css bootstrap.css -->
     <link href="js/lib/bootstrap/dist/css/bootstrap.css" media="all" rel="stylesheet" type="text/css">
+    <!-- /build -->
     <link href="app.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -19,13 +20,21 @@
     </header>
     <div ng-view style="margin-top: 51px;"></div>
 
-    <!--Misc files-->
-    <script type="text/javascript" src="js/lib/underscore/underscore.js"></script>
-
-    <!--AngularJs files-->
+    <!-- build:js js/angular.min.js -->
     <script type="text/javascript" src="js/lib/angular/angular.min.js"></script>
+    <!-- /build -->
+    <!-- build:js js/angular-route.min.js -->
     <script type="text/javascript" src="js/lib/angular-route/angular-route.min.js"></script>
+    <!-- /build -->
+    <!-- build:js js/angular-local-storage.min.js -->
     <script type="text/javascript" src="js/lib/angular-local-storage/angular-local-storage.min.js"></script>
+    <!-- /build -->
+    <!-- build:js js/underscore.js -->
+    <script type="text/javascript" src="js/lib/underscore/underscore.js"></script>
+    <!-- /build -->
+
+    <!-- build:js js/MMTS-Hyderabad-ChromeExtension.min.js -->
     <script type="text/javascript" src="js/angular/app.js"></script>
+    <!-- /build -->
 </body>
 </html>

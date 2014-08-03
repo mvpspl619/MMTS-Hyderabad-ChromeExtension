@@ -1,0 +1,28 @@
+<html lang="en" ng-app="mmts">
+<head>
+    <meta charset="UTF-8">
+    <title>MMTS Status Live</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link href="app.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header class="navbar navbar-static-top bs-docs-nav no-margin" id="top" role="banner" style="background: white; position: fixed; top: 0; overflow: hidden; width: 320px;">
+        <div class="col-xs-2 no-padding text-center">
+          <a href="#" class="navbar-brand"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        </div>
+        <div class="col-xs-8 text-center">
+          <a href="#" class="navbar-brand">MMTS Hyderabad</a>
+        </div>
+        <div class="col-xs-2 text-center">
+        </div>
+    </header>
+    <div ng-view style="margin-top: 51px;"></div>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-local-storage.min.js"></script>
+    <script src="js/underscore.js"></script>
+
+    <script src="js/MMTS-Hyderabad-ChromeExtension.min.js"></script>
+</body>
+</html>

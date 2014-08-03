@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mmts', ['ngRoute', 'LocalStorageModule'])
-.config(function($routeProvider){
+.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/', {
 		templateUrl: 'templates/default.html',
 		controller: 'defaultController'
@@ -15,7 +15,7 @@ angular.module('mmts', ['ngRoute', 'LocalStorageModule'])
 		controller: 'liveTrainController'
 	})
 	.otherwise('/');
-});
+}]);
 
 angular.module('mmts').controller('defaultController', ['$scope', '$location', 'stationsService', 'sharedService',
  function($scope, $location, stationsService, sharedService){
